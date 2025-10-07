@@ -1,4 +1,5 @@
 import azure.functions as func
+import os
 import datetime
 import json
 import logging
@@ -12,6 +13,7 @@ def sayHello(req: func.HttpRequest) -> func.HttpResponse:
 
     name = req.params.get('name')
     if not name:
+        name = os.getenv("NAME", "Mondo") 
         try:
             req_body = req.get_json()
         except ValueError:
