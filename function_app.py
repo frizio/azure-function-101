@@ -20,7 +20,8 @@ def listSecrets(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         secrets = [s.name for s in client.list_properties_of_secrets()]
-        return func.HttpResponse("\n".join(secrets))
+        # return func.HttpResponse("\n".join(secrets))
+        return func.HttpResponse(f"{len(secrets)} secrets found in Key Vault.")
     except Exception as e:
         logging.error(f"Error accessing Key Vault: {e}")
         return func.HttpResponse(f"Error: {str(e)}", status_code=500)
