@@ -10,7 +10,7 @@ app = func.FunctionApp()
 def listSecrets(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Function triggered to list Key Vault secrets.')
 
-    keyvault_name = "expriviaaikvf2t1yi" # os.getenv("KEYVAULT_NAME")
+    keyvault_name = os.getenv("KEYVAULT_NAME")
     if not keyvault_name:
         return func.HttpResponse("Missing KEYVAULT_NAME environment variable", status_code=500)
 
