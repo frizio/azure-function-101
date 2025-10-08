@@ -1,4 +1,4 @@
-# Progetti demo per muovere i primi passi nel mondo Azure Cloud
+# Progetti demo per muovere i primi passi nel mondo Azure Cloud con Functions App
 
 ## Impostare ambiente di sviluppo - WIP
 
