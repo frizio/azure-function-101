@@ -3,6 +3,7 @@ from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 import os
 import logging
+import psycopg2
 
 app = func.FunctionApp()
 
@@ -21,7 +22,7 @@ def listSecrets(req: func.HttpRequest) -> func.HttpResponse:
     try:
         secrets = [s.name for s in client.list_properties_of_secrets()]
         # return func.HttpResponse("\n".join(secrets))
-        return func.HttpResponse(f"{len(secrets)} secrets found in Key Vault.")
+        return func.HttpResponse(f"{len(secrets)} secrets found in Key Vault. Only showing count for security reasons.")
     except Exception as e:
         logging.error(f"Error accessing Key Vault: {e}")
         return func.HttpResponse(f"Error: {str(e)}", status_code=500)
